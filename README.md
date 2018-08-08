@@ -15,3 +15,7 @@ create-nteract-app yourApp
 cd yourApp
 yarn dev
 ```
+
+Now, navigate to [here](http://localhost:3000/) and you should see the following:
+
+![](Screenshot.png)
