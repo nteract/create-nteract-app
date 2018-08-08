@@ -1,0 +1,22 @@
+{
+  "name": "create-nteract-app",
+  "version": "0.1.0",
+  "description": "create an nteractive computing app!",
+  "author": "Alexander C. Booth <alexander.c.booth@gmail.com>",
+  "license": "MIT",
+  "bin": {
+    "create-nteract-app": "./src/index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.16.0",
+    "cross-spawn": "^6.0.5",
+    "fs-extra": "^7.0.0",
+    "hyperquest": "^2.1.3",
+    "lodash": "^4.17.10",
+    "semver": "^5.5.0",
+    "tar-pack": "^3.4.1",
+    "tmp": "^0.0.33",
+    "url": "^0.11.0"
+  }
+}
