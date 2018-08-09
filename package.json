@@ -2,8 +2,13 @@
   "name": "create-nteract-app",
   "version": "0.1.0",
   "description": "create an nteractive computing app!",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexandercbooth/create-nteract-app.git"
+  },
   "author": "Alexander C. Booth <alexander.c.booth@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/alexandercbooth/create-nteract-app",
   "bin": {
     "create-nteract-app": "./src/index.js"
   },
