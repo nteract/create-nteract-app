@@ -12,6 +12,17 @@
   "bin": {
     "create-nteract-app": "./src/index.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "chalk": "^2.4.1",
     "commander": "^2.16.0",
@@ -23,5 +34,10 @@
     "tar-pack": "^3.4.1",
     "tmp": "^0.0.33",
     "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "husky": "^1.0.0-rc.13",
+    "lint-staged": "^7.2.0",
+    "prettier": "1.14.2"
   }
 }
