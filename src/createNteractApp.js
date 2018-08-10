@@ -104,6 +104,7 @@ function run(root, appName, version, verbose, originalDirectory, template) {
     "@mybinder/host-cache",
     "@nteract/messaging",
     "@nteract/transforms",
+    "@nteract/presentational-components",
     "@nteract/logos",
     "rxjs",
     "lodash"
@@ -117,7 +118,7 @@ function run(root, appName, version, verbose, originalDirectory, template) {
     )}, ${chalk.cyan("next")}, ${chalk.cyan("@mybinder/host-cache")},
         ${chalk.cyan("@nteract/messaging")}, ${chalk.cyan(
       "@nteract/transforms"
-    )},
+    )}, ${chalk.cyan("@nteract/presentational-components")}
         ${chalk.cyan("rxjs")}, ${chalk.cyan("@nteract/logos")}, ${chalk.cyan(
       "lodash"
     )}`

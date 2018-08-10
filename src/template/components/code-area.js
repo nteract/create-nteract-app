@@ -1,16 +1,16 @@
 const _ = require("lodash");
 import { first, map } from "rxjs/operators";
+import { Outputs } from "@nteract/presentational-components";
 
 const transforms = require("@nteract/transforms");
 const messaging = require("@nteract/messaging");
-const { WideLogo } = require("@nteract/logos");
 
 export class CodeArea extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      source: this.props.children,
+      source: `${this.props.children}`,
       messageCollections: {}
     };
   }
@@ -64,71 +64,68 @@ export class CodeArea extends React.Component {
   render() {
     return (
       <>
-        <center>
-          <WideLogo height={80} theme="light" />
-          <br />
-          Welcome to nteract!
-          <br />
-          To get started, edit <code>pages/index.js</code>.
-        </center>
-        <hr />
-        <textarea
-          style={{
-            border: "solid 1px",
-            width: "80%",
-            height: "140px",
-            fontSize: ".8em",
-            fontFamily: `SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace`,
-            display: "block",
-            margin: "auto"
-          }}
-          onChange={event => {
-            this.setState({ source: event.target.value });
-          }}
-          value={this.state.source}
-        />
-        <button
-          onClick={() => {
-            this.props.kernel.channels.next(
-              messaging.executeRequest(this.state.source)
-            );
-          }}
-        >
-          ▶ Run
-        </button>
-        <button
-          onClick={() => {
-            this.setState({ messageCollections: {} });
-          }}
-        >
-          Clear
-        </button>
-        {_.map(this.state.messageCollections, (collection, parent_id) => {
-          return _.map(collection, msg => {
-            switch (msg.msg_type) {
-              case "execute_result":
-              case "display_data":
-                if (msg.content.data) {
-                  const mimetype = transforms.richestMimetype(msg.content.data);
-                  if (!mimetype) {
-                    return null;
-                  }
-                  const Transform = transforms.transforms[mimetype];
+        <div style={{ width: "80%", margin: "auto" }}>
+          <textarea
+            style={{
+              border: "solid 1px",
+              width: "100%",
+              height: "140px",
+              fontSize: ".8em",
+              fontFamily: `SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace`,
+              display: "block"
+            }}
+            onChange={event => {
+              this.setState({ source: event.target.value });
+            }}
+            value={this.state.source}
+          />
+          <button
+            onClick={() => {
+              this.props.kernel.channels.next(
+                messaging.executeRequest(this.state.source)
+              );
+            }}
+          >
+            ▶ Run
+          </button>
+          <button
+            onClick={() => {
+              this.setState({ messageCollections: {} });
+            }}
+          >
+            Clear
+          </button>
+          {_.map(this.state.messageCollections, (collection, parent_id) => {
+            return _.map(collection, msg => {
+              switch (msg.msg_type) {
+                case "execute_result":
+                case "display_data":
+                  if (msg.content.data) {
+                    const mimetype = transforms.richestMimetype(
+                      msg.content.data
+                    );
+                    if (!mimetype) {
+                      return null;
+                    }
+                    const Transform = transforms.transforms[mimetype];
 
-                  return (
-                    <Transform
-                      key={msg.header.msg_id}
-                      data={msg.content.data[mimetype]}
-                    />
-                  );
-                }
-              case "stream":
-                return <pre key={msg.header.msg_id}>{msg.content.text}</pre>;
-              default:
-                return null;
-            }
-          });
-        })}
+                    return (
+                      <Outputs>
+                        <Transform
+                          key={msg.header.msg_id}
+                          data={msg.content.data[mimetype]}
+                        />
+                      </Outputs>
+                    );
+                  }
+                case "stream":
+                  return <pre key={msg.header.msg_id}>{msg.content.text}</pre>;
+                default:
+                  return null;
+              }
+            });
+          })}
+        </div>
       </>
     );
   }
