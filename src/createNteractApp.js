@@ -5,12 +5,8 @@ const fs = require("fs-extra");
 const path = require("path");
 const execSync = require("child_process").execSync;
 const spawn = require("cross-spawn");
-const semver = require("semver");
-const url = require("url");
-const hyperquest = require("hyperquest");
 const os = require("os");
 const packageJson = require("../package.json");
-const tmp = require("tmp");
 
 let projectName;
 
