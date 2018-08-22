@@ -20,7 +20,7 @@ jobs:
                   - yarn-packages-{{ checksum "yarn.lock" }}
                   - yarn-packages-
 
-      - run: npm i -g
+      - run: sudo npm i -g
 
       - save_cache:
           name: Save Yarn Package Cache
