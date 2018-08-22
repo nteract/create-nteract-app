@@ -12,11 +12,15 @@ const Index = () => {
     <div className="app">
       <Kernel repo="binder-examples/requirements" kernelName="python3">
         <Kernel.Consumer>
-          {kernel => (
-            <CodeState kernel={kernel}>
+          {kernel =>
+            kernel ? (
+              <CodeState kernel={kernel}>
+                <PresentationCell key={"the-cell"} />
+              </CodeState>
+            ) : (
               <PresentationCell key={"the-cell"} />
-            </CodeState>
-          )}
+            )
+          }
         </Kernel.Consumer>
       </Kernel>
       <style jsx>{`
