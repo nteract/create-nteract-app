@@ -15,9 +15,17 @@ export default class CodeState extends React.Component {
     };
   }
 
+  componentDidUpdate() {
+    this.getKernelInfo();
+  }
+
   getKernelInfo() {
     // Set up a receiver for kernel info
     let kernelInfo = null;
+    if (!this.props.kernel) {
+      return;
+    }
+
     this.props.kernel.channels
       .pipe(
         messaging.ofMessageType("kernel_info_reply"),
