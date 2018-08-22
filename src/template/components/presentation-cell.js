@@ -78,7 +78,7 @@ export default class PresentationCell extends React.Component {
       <div className="presentational">
         <Cell isSelected>
           <Input>
-            <Prompt counter={3} />
+            <Prompt buffer />
             <Source>
               <CodeMirrorEditor
                 options={this.state.codeMirrorOptions}
