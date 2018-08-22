@@ -8,6 +8,8 @@ const spawn = require("cross-spawn");
 const os = require("os");
 const packageJson = require("../package.json");
 
+console.warn("(F*S&(GHDF*SDGIJFSDOI))");
+
 let projectName;
 
 const program = new commander.Command(packageJson.name)
@@ -101,6 +103,7 @@ function run(root, appName, version, verbose, originalDirectory, template) {
     "@nteract/messaging",
     "@nteract/transforms",
     "@nteract/presentational-components",
+    "@nteract/ion",
     "@nteract/logos",
     "rxjs",
     "lodash"
@@ -109,15 +112,7 @@ function run(root, appName, version, verbose, originalDirectory, template) {
   console.log("Installing packages. This might take a couple of minutes.");
   let packageName;
   console.log(
-    `Installing ${chalk.cyan("react")}, ${chalk.cyan(
-      "react-dom"
-    )}, ${chalk.cyan("next")}, ${chalk.cyan("@mybinder/host-cache")},
-        ${chalk.cyan("@nteract/messaging")}, ${chalk.cyan(
-      "@nteract/transforms"
-    )}, ${chalk.cyan("@nteract/presentational-components")}
-        ${chalk.cyan("rxjs")}, ${chalk.cyan("@nteract/logos")}, ${chalk.cyan(
-      "lodash"
-    )}`
+    `Installing ${allDependencies.map(entry => chalk.cyan(entry)).join(", ")}`
   );
   console.log();
   const useYarn = isYarnAvailable();
