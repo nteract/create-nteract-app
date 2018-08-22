@@ -1,0 +1,39 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.11.4-browsers
+
+    working_directory: ~/create-nteract-app
+
+    steps:
+      - checkout
+
+      - restore_cache:
+                name: Restore Yarn Package Cache
+                keys:
+                  - yarn-packages-{{ checksum "yarn.lock" }}
+                  - yarn-packages-
+
+      - run: yarn
+
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      
+      - run:
+          name: Create an nteract app
+          command: create-nteract-app snow-leopard
+        
+      - run: 
+          name: Run tests
+          command: yarn test
+
+
