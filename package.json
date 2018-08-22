@@ -1,6 +1,6 @@
 {
   "name": "create-nteract-app",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "create an nteractive computing app!",
   "repository": {
     "type": "git",
