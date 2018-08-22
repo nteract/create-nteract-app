@@ -8,8 +8,6 @@ const spawn = require("cross-spawn");
 const os = require("os");
 const packageJson = require("../package.json");
 
-console.warn("(F*S&(GHDF*SDGIJFSDOI))");
-
 let projectName;
 
 const program = new commander.Command(packageJson.name)
