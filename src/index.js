@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require("./createNteractApp");
+require("./create-nteract-app");
