@@ -104,6 +104,8 @@ function run(root, appName, version, verbose, originalDirectory, template) {
     "@nteract/transforms",
     "@nteract/presentational-components",
     "immer",
+    "@zeit/next-mdx",
+    "@mdx-js/mdx",
     "@nteract/editor",
     "@nteract/ion",
     "@nteract/logos",
