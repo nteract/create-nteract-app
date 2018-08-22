@@ -2,8 +2,7 @@ const withMDX = require("@zeit/next-mdx")();
 module.exports = withMDX({
   exportPathMap: function() {
     return {
-      "/": { page: "/" },
-      "/cell": { page: "/cell" }
+      "/": { page: "/" }
     };
   }
 });
