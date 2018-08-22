@@ -7,6 +7,9 @@ import {
   Outputs
 } from "@nteract/presentational-components";
 
+const transforms = require("@nteract/transforms");
+const messaging = require("@nteract/messaging");
+
 import CodeMirrorEditor from "@nteract/editor";
 
 export default class PresentationCell extends React.Component {
@@ -14,12 +17,20 @@ export default class PresentationCell extends React.Component {
     super(props);
 
     this.submit = () => {
-      console.log(this.state.source);
+      console.log("Submitting", this.state.source);
+      if (this.props.kernel && this.props.kernel.channels) {
+        this.props.kernel.channels.next(
+          messaging.executeRequest(this.state.source)
+        );
+        console.log("submitted!");
+      } else {
+        console.warn("Could not submit, kernel not connected");
+        debugger;
+      }
     };
 
     this.state = {
-      source: this.props.source,
-      messageCollections: {},
+      source: this.props.children,
       codeMirrorOptions: {
         extraKeys: {
           "Ctrl-Space": "autocomplete",
@@ -33,6 +44,36 @@ export default class PresentationCell extends React.Component {
   }
 
   render() {
+    const outputs = _.map(
+      this.props.messageCollections,
+      (collection, parent_id) => {
+        return _.map(collection, msg => {
+          switch (msg.msg_type) {
+            case "execute_result":
+            case "display_data":
+              if (msg.content.data) {
+                const mimetype = transforms.richestMimetype(msg.content.data);
+                if (!mimetype) {
+                  return null;
+                }
+                const Transform = transforms.transforms[mimetype];
+
+                return (
+                  <Transform
+                    key={msg.header.msg_id}
+                    data={msg.content.data[mimetype]}
+                  />
+                );
+              }
+            case "stream":
+              return <pre key={msg.header.msg_id}>{msg.content.text}</pre>;
+            default:
+              return null;
+          }
+        }).filter(x => x !== null);
+      }
+    );
+
     return (
       <div className="omg">
         <Cell isSelected>
@@ -50,6 +91,7 @@ export default class PresentationCell extends React.Component {
               />
             </Source>
           </Input>
+          {outputs && outputs.length > 0 ? <Outputs>{outputs}</Outputs> : null}
         </Cell>
         <style>{`
       .omg {
@@ -60,3 +102,7 @@ export default class PresentationCell extends React.Component {
     );
   }
 }
+
+PresentationCell.defaultProps = {
+  children: ""
+};

@@ -14,10 +14,6 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i"
             rel="stylesheet"
           />
-          <link
-            rel="stylesheet"
-            href="https://unpkg.com/awsm.css/dist/awsm.min.css"
-          />
           <style>{`body { margin: 0 } /* custom! */`}</style>
         </Head>
         <body className="custom_class">

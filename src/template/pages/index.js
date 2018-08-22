@@ -10,7 +10,7 @@ df.head()
 
 const Index = () => {
   return (
-    <>
+    <div className="app">
       <center>
         <WideLogo height={80} theme="light" />
         <br />
@@ -30,7 +30,12 @@ const Index = () => {
           }
         </Kernel.Consumer>
       </Kernel>
-    </>
+      <style jsx>{`
+        .app {
+          padding: 30px;
+        }
+      `}</style>
+    </div>
   );
 };
 

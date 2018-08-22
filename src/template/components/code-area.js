@@ -2,6 +2,8 @@ const _ = require("lodash");
 import { first, map } from "rxjs/operators";
 import { Outputs } from "@nteract/presentational-components";
 
+import CodeMirrorEditor from "@nteract/editor";
+
 const transforms = require("@nteract/transforms");
 const messaging = require("@nteract/messaging");
 
