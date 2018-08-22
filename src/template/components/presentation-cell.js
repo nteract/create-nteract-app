@@ -72,10 +72,10 @@ export default class PresentationCell extends React.Component {
           }
         }).filter(x => x !== null);
       }
-    );
+    ).filter(x => x.length !== 0);
 
     return (
-      <div className="omg">
+      <div className="presentational">
         <Cell isSelected>
           <Input>
             <Prompt counter={3} />
@@ -93,16 +93,12 @@ export default class PresentationCell extends React.Component {
           </Input>
           {outputs && outputs.length > 0 ? <Outputs>{outputs}</Outputs> : null}
         </Cell>
-        <style>{`
-      .omg {
-        text-align: left
-      }
-      `}</style>
       </div>
     );
   }
 }
 
 PresentationCell.defaultProps = {
-  children: ""
+  children: "",
+  kernel: null
 };
