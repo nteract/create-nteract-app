@@ -4,7 +4,6 @@ import PresentationCell from "../components/presentation-cell";
 import CodeState from "../components/code-state";
 
 import { Kernel } from "@mybinder/host-cache";
-import { CodeArea } from "../components/code-area";
 const { WideLogo } = require("@nteract/logos");
 
 const Index = () => {
