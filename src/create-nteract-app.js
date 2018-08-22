@@ -103,6 +103,8 @@ function run(root, appName, version, verbose, originalDirectory, template) {
     "@nteract/messaging",
     "@nteract/transforms",
     "@nteract/presentational-components",
+    "immer",
+    "@nteract/editor",
     "@nteract/ion",
     "@nteract/logos",
     "rxjs",

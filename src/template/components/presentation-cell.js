@@ -19,6 +19,7 @@ export default class PresentationCell extends React.Component {
 
     this.state = {
       source: this.props.source,
+      messageCollections: {},
       codeMirrorOptions: {
         extraKeys: {
           "Ctrl-Space": "autocomplete",
