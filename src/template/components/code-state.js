@@ -69,6 +69,10 @@ export default class CodeState extends React.Component {
     this.getKernelInfo();
   }
 
+  componentWillUnmount() {
+    this.subscription.unsubscribe();
+  }
+
   render() {
     return React.Children.map(this.props.children, child => {
       return React.cloneElement(child, {
