@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://github.com/alexandercbooth/create-nteract-app.git"
   },
+  "scripts": {
+    "test": "node __tests__/index-spec.js"
+  },
   "author": "Alexander C. Booth <alexander.c.booth@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/alexandercbooth/create-nteract-app",
