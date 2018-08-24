@@ -7,7 +7,7 @@
     "url": "https://github.com/alexandercbooth/create-nteract-app.git"
   },
   "scripts": {
-    "test": "node __tests__/index-spec.js"
+    "test": "jest"
   },
   "author": "Alexander C. Booth <alexander.c.booth@gmail.com>",
   "license": "MIT",
@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "husky": "^1.0.0-rc.13",
+    "jest": "^23.5.0",
     "lint-staged": "^7.2.0",
     "prettier": "1.14.2"
   }
