@@ -7,8 +7,8 @@
     "url": "https://github.com/alexandercbooth/create-nteract-app.git"
   },
   "scripts": {
-    "dev": "node src/index.js",
-    "test": "jest"
+    "dev": "CNA_ENV=DEV node src/index.js",
+    "test": "CNA_ENV=DEV yarn dev snow-leopard && jest"
   },
   "author": "Alexander C. Booth <alexander.c.booth@gmail.com>",
   "license": "MIT",
