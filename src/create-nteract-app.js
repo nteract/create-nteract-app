@@ -122,13 +122,19 @@ function run(root, appName, version, verbose, originalDirectory, template) {
   return install(root, useYarn, allDependencies, verbose)
     .then(() => packageName)
     .then(packageName => {
-      const ownPath = path.join(
-        nodePath.split("\n")[0],
-        "lib/node_modules",
-        packageJson.name
-      );
+      const templatePath =
+        process.env.CNA_ENV === "DEV"
+          ? path.join("../src", "template")
+          : path.join(
+              path.join(
+                nodePath.split("\n")[0],
+                "lib/node_modules",
+                packageJson.name
+              ),
+              "src",
+              "template"
+            );
       const appPath = process.cwd();
-      const templatePath = path.join(ownPath, "src", "template");
       const appDefaultPage = path.join(templatePath, "pages/index.js");
 
       if (fs.existsSync(templatePath)) {
