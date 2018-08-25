@@ -4,7 +4,7 @@
   "description": "create an nteractive computing app!",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexandercbooth/create-nteract-app.git"
+    "url": "https://github.com/nteract/create-nteract-app.git"
   },
   "scripts": {
     "dev": "CNA_ENV=DEV node src/index.js",
@@ -12,7 +12,7 @@
   },
   "author": "Alexander C. Booth <alexander.c.booth@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/alexandercbooth/create-nteract-app",
+  "homepage": "https://github.com/nteract/create-nteract-app",
   "bin": {
     "create-nteract-app": "./src/index.js"
   },
