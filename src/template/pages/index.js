@@ -25,6 +25,11 @@ const Index = () => {
         </p>
       </header>
 
+      {/*
+      * If you'd like to use R, try out this instead:
+      * <Kernel repo="binder-examples/r" kernelName="ir">
+      */}
+
       <Kernel repo="binder-examples/requirements" kernelName="python3">
         <Kernel.Consumer>
           {kernel =>
