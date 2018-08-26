@@ -107,7 +107,6 @@ function run(root, appName, version, verbose, originalDirectory, template) {
     "@nteract/editor",
     "@nteract/ion",
     "@nteract/logos",
-    "rxjs",
     "lodash"
   ];
 
