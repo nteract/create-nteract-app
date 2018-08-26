@@ -7,5 +7,5 @@ module.exports = withMDX({
       "/": { page: "/" }
     };
   },
-  pageExtensions: ["md", "mdx"]
+  pageExtensions: ["md", "mdx", "js", "jsx"]
 });
