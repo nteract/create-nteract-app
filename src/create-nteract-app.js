@@ -101,13 +101,13 @@ function run(root, appName, version, verbose, originalDirectory, template) {
     "@nteract/messaging",
     "@nteract/transforms",
     "@nteract/presentational-components",
-    "immer",
+    "immer@^1.5.0",
     "@zeit/next-mdx",
     "@mdx-js/mdx",
     "@nteract/editor",
     "@nteract/ion",
     "@nteract/logos",
-    "lodash"
+    "lodash@^4.17.4"
   ];
 
   console.log("Installing packages. This might take a couple of minutes.");
