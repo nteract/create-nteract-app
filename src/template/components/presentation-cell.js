@@ -38,7 +38,8 @@ export default class PresentationCell extends React.Component {
           "Ctrl-Enter": this.submit,
           "Cmd-Enter": this.submit
         },
-        mode: "python"
+        mode: "python",
+        readOnly: this.props.readOnly
       }
     };
   }
