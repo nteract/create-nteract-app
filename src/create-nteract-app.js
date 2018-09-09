@@ -75,7 +75,22 @@ function createApp(name, verbose, version, useNpm, template, language) {
       dev: "next",
       build: "next build",
       start: "next start",
-      export: "next export"
+      export: "next export",
+      test: "jest"
+    },
+    jest: {
+      setupFiles: ["./scripts/test-setup"]
+    },
+    devDependencies: {
+      "@babel/preset-env": "^7.0.0",
+      "@babel/preset-react": "^7.0.0",
+      "babel-core": "^7.0.0-0",
+      "@babel/core": "^7.0.0",
+      "babel-jest": "^23.4.2",
+      enzyme: "^3.6.0",
+      "enzyme-adapter-react-16": "^1.5.0",
+      "enzyme-to-json": "^3.3.4",
+      jest: "^23.5.0"
     }
   };
   fs.writeFileSync(
