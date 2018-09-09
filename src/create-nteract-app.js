@@ -99,15 +99,23 @@ function createApp(name, verbose, version, useNpm, template, language) {
   );
   const originalDirectory = process.cwd();
   process.chdir(root);
-  run(root, appName, version, verbose, originalDirectory, template);
+  const devDeps = Object.keys(packageJson.devDependencies);
+  run(root, appName, version, verbose, originalDirectory, template, devDeps);
 }
 const exec = require("child_process").exec;
 let nodePath;
 exec("npm config get prefix", function(err, stdout, stderr) {
   nodePath = stdout;
 });
-
-function run(root, appName, version, verbose, originalDirectory, template) {
+function run(
+  root,
+  appName,
+  version,
+  verbose,
+  originalDirectory,
+  template,
+  devDeps
+) {
   const allDependencies = [
     "react",
     "react-dom",
@@ -128,7 +136,10 @@ function run(root, appName, version, verbose, originalDirectory, template) {
   console.log("Installing packages. This might take a couple of minutes.");
   let packageName;
   console.log(
-    `Installing ${allDependencies.map(entry => chalk.cyan(entry)).join(", ")}`
+    `Installing ${allDependencies
+      .concat(devDeps)
+      .map(entry => chalk.cyan(entry))
+      .join(", ")}`
   );
   console.log();
   const useYarn = isYarnAvailable();
