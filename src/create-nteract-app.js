@@ -191,6 +191,9 @@ function run(
       console.log(chalk.cyan(`  ${displayedCommand} dev`));
       console.log("    Starts the development server.");
       console.log();
+      console.log(chalk.cyan(`  ${displayedCommand} test`));
+      console.log("    Starts the test runner.");
+      console.log();
       console.log(chalk.cyan(`  ${displayedCommand} build`));
       console.log("    Builds the app for production.");
       console.log();
