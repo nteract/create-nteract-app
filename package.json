@@ -16,6 +16,13 @@
   "bin": {
     "create-nteract-app": "./src/index.js"
   },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "src/*",
+      "snow-leopard/*"
+    ]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

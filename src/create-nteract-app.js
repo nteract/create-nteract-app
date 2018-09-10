@@ -75,7 +75,22 @@ function createApp(name, verbose, version, useNpm, template, language) {
       dev: "next",
       build: "next build",
       start: "next start",
-      export: "next export"
+      export: "next export",
+      test: "jest"
+    },
+    jest: {
+      setupFiles: ["./scripts/test-setup"]
+    },
+    devDependencies: {
+      "@babel/preset-env": "^7.0.0",
+      "@babel/preset-react": "^7.0.0",
+      "babel-core": "^7.0.0-0",
+      "@babel/core": "^7.0.0",
+      "babel-jest": "^23.4.2",
+      enzyme: "^3.6.0",
+      "enzyme-adapter-react-16": "^1.5.0",
+      "enzyme-to-json": "^3.3.4",
+      jest: "^23.5.0"
     }
   };
   fs.writeFileSync(
@@ -84,15 +99,23 @@ function createApp(name, verbose, version, useNpm, template, language) {
   );
   const originalDirectory = process.cwd();
   process.chdir(root);
-  run(root, appName, version, verbose, originalDirectory, template);
+  const devDeps = Object.keys(packageJson.devDependencies);
+  run(root, appName, version, verbose, originalDirectory, template, devDeps);
 }
 const exec = require("child_process").exec;
 let nodePath;
 exec("npm config get prefix", function(err, stdout, stderr) {
   nodePath = stdout;
 });
-
-function run(root, appName, version, verbose, originalDirectory, template) {
+function run(
+  root,
+  appName,
+  version,
+  verbose,
+  originalDirectory,
+  template,
+  devDeps
+) {
   const allDependencies = [
     "react",
     "react-dom",
@@ -113,7 +136,10 @@ function run(root, appName, version, verbose, originalDirectory, template) {
   console.log("Installing packages. This might take a couple of minutes.");
   let packageName;
   console.log(
-    `Installing ${allDependencies.map(entry => chalk.cyan(entry)).join(", ")}`
+    `Installing ${allDependencies
+      .concat(devDeps)
+      .map(entry => chalk.cyan(entry))
+      .join(", ")}`
   );
   console.log();
   const useYarn = isYarnAvailable();
@@ -164,6 +190,9 @@ function run(root, appName, version, verbose, originalDirectory, template) {
       console.log();
       console.log(chalk.cyan(`  ${displayedCommand} dev`));
       console.log("    Starts the development server.");
+      console.log();
+      console.log(chalk.cyan(`  ${displayedCommand} test`));
+      console.log("    Starts the test runner.");
       console.log();
       console.log(chalk.cyan(`  ${displayedCommand} build`));
       console.log("    Builds the app for production.");
