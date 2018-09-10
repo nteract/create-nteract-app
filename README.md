@@ -1,6 +1,6 @@
 # create-nteract-app
 
-[![CircleCI](https://circleci.com/gh/nteract/create-nteract-app/tree/master.svg?style=svg)](https://circleci.com/gh/nteract/create-nteract-app/tree/master)
+[![CircleCI](https://circleci.com/gh/nteract/create-nteract-app/tree/master.svg?style=svg)](https://circleci.com/gh/nteract/create-nteract-app/tree/master) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 > Create an nteractive application backed by next.js, mybinder and react with zero configuration.
 
@@ -33,12 +33,12 @@ Now, navigate to [http://localhost:3000/](http://localhost:3000/) and you should
 An app bootstrapped with `create-nteract-app` comes with:
 
 - [@nteract](https://github.com/nteract) components for interactive computing apps/pages
-- automatic webpack and babel configuration through next.js
+- automatic webpack and babel configuration through [next.js](https://nextjs.org/)
 - live hot reloading
-- mdx
-- Every .js or .md file in `./pages` becomes a route that gets automatically processed and rendered!
+- [mdx](https://mdxjs.com/)
+- every .js or .md file in `./pages` becomes a route that gets automatically processed and rendered!
 
-This means you can write your app in `js` or `markdown` or even both! :smile:
+This means you can write your app in `js`, `markdown` or even both! :smile:
 
 Your new nteract app will have the following strucure,
 
@@ -80,3 +80,22 @@ Your new nteract app will have the following strucure,
 5. `yarn export`
 
    This will export your code as a static HTML app.
+
+## Contributing :tada:
+
+Thanks for your interest in contributing! If you get stuck at any point, don't hesitate to reach out to the nteract team on slack or through the issue tracker.
+
+To get started hacking on `create-nteract-app`, clone the repo and install dependencies.
+
+```bash
+git clone https://github.com/nteract/create-nteract-app.git
+cd create-nteract-app
+yarn
+```
+
+Now, make your changes and try them out with,
+`yarn dev your-test-app`
+
+This will run `create-nteract-app` with any modifications you have made. Test your changes with `yarn test`.
+
+See [CONTRIBUTING.md](https://github.com/nteract/create-nteract-app/blob/master/CONTRIBUTING.md) for more details.
