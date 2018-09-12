@@ -124,13 +124,12 @@ function run(
     "@nteract/messaging",
     "@nteract/transforms",
     "@nteract/presentational-components",
-    "immer@^1.5.0",
+    "immer@^1.6.0",
     "@zeit/next-mdx",
     "@mdx-js/mdx",
     "@nteract/editor",
-    "@nteract/ion",
     "@nteract/logos",
-    "lodash@^4.17.4"
+    "lodash@^4.17.10"
   ];
 
   console.log("Installing packages. This might take a couple of minutes.");
