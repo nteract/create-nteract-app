@@ -38,7 +38,7 @@
     "chalk": "^2.4.1",
     "commander": "^2.16.0",
     "cross-spawn": "^6.0.5",
-    "fs-extra": "^7.0.0"
+    "fs-extra": "^8.0.0"
   },
   "devDependencies": {
     "husky": "^2.0.0",
