@@ -2,7 +2,9 @@
 
 [![CircleCI](https://circleci.com/gh/nteract/create-nteract-app/tree/master.svg?style=svg)](https://circleci.com/gh/nteract/create-nteract-app/tree/master) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-> Create an nteractive application backed by next.js, mybinder and react with zero configuration.
+⚠️ This project is now archived due to new directions for the open source project, particularly to reduce our maintenance burden. ⚠️
+
+> ~~Create an nteractive application backed by next.js, mybinder and react with zero configuration.~~
 
 ## Installation
 
